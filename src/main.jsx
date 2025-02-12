@@ -5,6 +5,7 @@ import { createBrowserRouter,  RouterProvider } from "react-router-dom";
 import News from './pages/News/news.jsx'
 import GlobalStyle from './Globals/GlobalStyle.jsx';
 import Error from './pages/Error/Error.jsx';
+import Video from './pages/Video/video.jsx';
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/news",
-        element: <News />,}
+        element: <News />,},
+        {
+          path: "/video",
+          element: <Video />,}
     ]
    
   }
