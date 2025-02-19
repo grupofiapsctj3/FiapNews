@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import img from "../../assets/elon.jpg";
 import Background from "../../assets/gradiente.webp";
 
 
@@ -21,12 +20,26 @@ const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  img ,{
-  width: 100%;
-  max-width: 800px;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-}
+  img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  figure {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  figcaption {
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 5px;
+  }
   `;
 
 const Title = styled.h1`

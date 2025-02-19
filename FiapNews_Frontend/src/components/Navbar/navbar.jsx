@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Link } from 'react-router-dom';
 import FiapNewsPlus from "../../assets/Fiap-News-Plus.png";
-import UploadComponent from "../../pages/Cadastro/Cadastro";
 
 const FIXED_NAVBAR_HEIGHT = "1.5rem"
 
@@ -109,7 +108,6 @@ const Navbar = () => {
         <NavLogo>
           <img src={FiapNewsPlus} alt="Logo" />
         </NavLogo>
-        <UploadComponent>Up image</UploadComponent>
         <NavLinks>
         <li>
           <StyledLink to= '/'>Home</StyledLink>
