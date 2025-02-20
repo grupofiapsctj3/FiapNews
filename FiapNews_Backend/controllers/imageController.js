@@ -54,8 +54,8 @@ async function saveImageMetadata(req, res) {
 
 async function getImages(req, res) {
   try {
-    const images = await ImageModel.find().sort({ createdAt: -1 }).select("imageUrl");  // Só traz a URL da imagem
-    res.json(images);  // Retorna uma lista de objetos com apenas a URL
+    const images = await ImageModel.find().sort({ createdAt: -1 }); 
+    res.json(images);
   } catch (error) {
     console.error("Erro ao buscar as imagens:", error);
     res.status(500).json({ message: "Erro ao buscar as imagens." });

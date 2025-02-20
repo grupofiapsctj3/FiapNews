@@ -1,80 +1,3 @@
-/*import React, { useEffect, useState } from "react";
-import axios from "axios";
-import styled from "styled-components";
-
-const GalleryContainer = styled.div`
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 20px;
-  background: #f9f9f9;
-  border-right: 1px solid #ddd;
-`;
-
-const ImageItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-`;
-
-const Image = styled.img`
-  width: 150px;
-  height: auto;
-  border-radius: 5px;
-`;
-
-const Caption = styled.p`
-  margin: 5px 0 0;
-  font-size: 14px;
-  color: #333;
-`;
-
-const Description = styled.p`
-  font-size: 12px;
-  color: #777;
-`;
-
-const ImageGallery = () => {
-  const [images, setImages] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/images/all") // 🔥 Faz a requisição GET para o backend
-      .then((response) => {
-        setImages(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar imagens:", error);
-      });
-  }, []);
-
-  return (
-    <GalleryContainer>
-      <h3>Galeria de Imagens</h3>
-      {images.length === 0 ? (
-        <p>Nenhuma imagem encontrada.</p>
-      ) : (
-        images.map((image) => (
-          <ImageItem key={image._id}>
-            <Image src={image.imageUrl} alt={image.caption} />
-            <Caption>{image.caption}</Caption>
-            <Description>{image.description}</Description>
-          </ImageItem>
-        ))
-      )}
-    </GalleryContainer>
-  );
-};
-
-export default ImageGallery; */
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
@@ -97,6 +20,7 @@ const ImagePreview = styled.img`
   &:hover {
     border-color: #007bff;
   }
+  
 `;
 
 const ImageGallery = ({ quillRef }) => {
@@ -118,19 +42,36 @@ const ImageGallery = ({ quillRef }) => {
   const handleImageClick = (url) => {
     const editor = quillRef.current.getEditor();
     const range = editor.getSelection();
-    const imageTag = `<img src="${url}" alt="Imagem" />`;  // Marca a imagem no formato HTML
+    const imageTag = `
+        <figure>
+          <img src="${url}" alt="Imagem" />
+          <figcaption><strong>${caption}</strong><br>${description}</figcaption>
+        </figure>
+        `;  // Marca a imagem no formato HTML
     editor.clipboard.dangerouslyPasteHTML(range.index, imageTag);
   };
 
   // Função para arrastar a imagem para o React-Quill
-  const handleDragImage = (event, url) => {
-    event.preventDefault();
-    const editor = quillRef.current.getEditor();
-    const range = editor.getSelection();
-    const imageTag = `<img src="${url}" alt="Imagem" />`;  // Marca a imagem no formato HTML
-    editor.clipboard.dangerouslyPasteHTML(range.index, imageTag);
+  const handleDragStart = (event, url) => {
+    event.dataTransfer.setData("text/plain", url);
   };
-
+  
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const url = event.dataTransfer.getData("text/plain");
+    const editor = quillRef.current?.getEditor();
+  
+    if (editor) {
+      const range = editor.getSelection() || { index: editor.getLength() };
+      const imageTag = ` 
+        <figure>
+          <img src="${url}" alt="Imagem" />
+          <figcaption><strong>${caption}</strong><br>${description}</figcaption>
+        </figure>
+        `;
+      editor.clipboard.dangerouslyPasteHTML(range.index, imageTag);
+    }
+  };
   return (
     <GalleryContainer>
       <h3>Galeria de Imagens</h3>
@@ -148,3 +89,4 @@ const ImageGallery = ({ quillRef }) => {
 };
 
 export default ImageGallery;
+

@@ -124,16 +124,19 @@ const NewsFormRegistration = () => {
   const handleTextChange = (content) => {
     setForm({ ...form, news: content });
   };
-
-  const handleInsertImageMarker = (imageUrl) => {
+  
+  const handleInsertImageMarker = (imageData) => {
     if (quillRef.current) {
       const quill = quillRef.current.getEditor();
       const range = quill.getSelection();
       if (range) {
-        quill.insertText(range.index, `{imagem${images.length + 1}}`);
+        // Criamos o token usando o ID, legenda e descrição
+        const token = `{imagem:${imageData.id}|legenda:${imageData.legenda}|descricao:${imageData.descricao}}`;
+  
+        // Inserimos o token no editor na posição do cursor
+        quill.insertText(range.index, token);
       }
     }
-    setImages((prev) => [...prev, imageUrl]);
   };
 
   const handleSubmit = async (e) => {
@@ -188,7 +191,13 @@ const NewsFormRegistration = () => {
           <Input type="text" name="title" value={form.title} onChange={handleChange} required />
 
           <Label>Subtítulo</Label>
-          <Input type="text" name="title" value={form.title} onChange={handleChange} required />
+          <Input type="text" name="subTitle" value={form.subTitle} onChange={handleChange} required />
+
+          <Label>Título Resumido</Label>
+          <Input type="text" name="briefTitle" value={form.briefTitle} onChange={handleChange} required />
+
+          <Label>Subtítulo Resumido</Label>
+          <Input type="text" name="briefSubTitle" value={form.briefSubTitle} onChange={handleChange} required />
 
           <Label>Resumo</Label>
           <Input type="text" name="summary" value={form.summary} onChange={handleChange} required />

@@ -1,18 +1,3 @@
-/*import mongoose from "mongoose";
-
-const archiveNewsSchema = new mongoose.Schema({
-    id: { type: mongoose.Schema.Types.ObjectId},
-    url: { type: String, required: true },
-    date: { type: Date, default: Date.now },
-    legenda: { type: String, maxlength: 20 }, 
-    descricao: { type: String, minlength: 15 },
-}, { versionKey: false });
-
-const archiveNews = mongoose.model("images", archiveNewsSchema);
-
-export default archiveNews;
-*/
-
 import mongoose from "mongoose";
 
 const imageSchema = new mongoose.Schema({

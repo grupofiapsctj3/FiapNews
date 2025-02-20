@@ -100,7 +100,7 @@ const Text = styled.p`
 
 
 const News = () => {
-  const newsId = "67b0b75f6f7e5e046d2d2d88";
+  const newsId = "67b6638ef773aac7a3029adc";
   //const { id } = useParams(); // Pega o ID da URL
   const [news, setNews] = useState(null);
   const [loading, setLoading] = useState(true);
