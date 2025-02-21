@@ -6,7 +6,7 @@ import News from './pages/News/news.jsx'
 import GlobalStyle from './Globals/GlobalStyle.jsx';
 import Error from './pages/Error/Error.jsx';
 import NewsFormRestration from './pages/Registration/newsRegistration.jsx';
-
+import Home from './pages/Home/Home.jsx';
 
 
 const router = createBrowserRouter([
@@ -21,7 +21,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/news",
-        element: <News />,}
+        element: <News />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
     ]
    
   }
