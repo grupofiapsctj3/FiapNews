@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 const ColumnistsSection = styled.div`
   height: 150px;
-  width: 100vh;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
   align-items: center;
   padding: 10px;
   border-top: 0.015rem solid #ccc;
   border-bottom: 0.015rem solid #ccc;
+  justify-content: center;
 `;
 
 const ColumnistCard = styled.div`
@@ -39,6 +39,10 @@ const columnists = [
     { name: "Ariadne", img: "https://cdn.filestackcontent.com/Augwb710QECDh5WCwSgc" },
     { name: "Gabriel Moratelli", img: "https://cdn.filestackcontent.com/rj46Aa26S8SXNfjEvNZu" },
     { name: "Ariadne", img: "https://cdn.filestackcontent.com/Augwb710QECDh5WCwSgc" },
+    { name: "Gustavo Parra Benitez", img: "https://cdn.filestackcontent.com/j43NwMY2Ripxy2VaCGM0" },
+    { name: "Gustavo Parra Benitez", img: "https://cdn.filestackcontent.com/j43NwMY2Ripxy2VaCGM0" },
+    { name: "Gustavo Parra Benitez", img: "https://cdn.filestackcontent.com/j43NwMY2Ripxy2VaCGM0" },
+    { name: "Gustavo Parra Benitez", img: "https://cdn.filestackcontent.com/j43NwMY2Ripxy2VaCGM0" },
     { name: "Gustavo Parra Benitez", img: "https://cdn.filestackcontent.com/j43NwMY2Ripxy2VaCGM0" },
     { name: "Gabriel Moratelli", img: "https://cdn.filestackcontent.com/rj46Aa26S8SXNfjEvNZu" }
   ];

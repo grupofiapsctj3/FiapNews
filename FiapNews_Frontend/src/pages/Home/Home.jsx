@@ -1,71 +1,56 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import styled from "styled-components";
-import Background from "../../assets/gradiente.webp";
-import { Swiper, SwiperSlide } from "swiper/react";
 import ColumnistsContainer from "../../components/ColumnistSection/ColumnistSection";
 import GridNewsBotton from "../../components/GridNewsBotton/GridNewsBotton";
+import MainContainerHome from "../../components/MainContainerHome/mainContainerHome";
+
 
 
 const Container = styled.div`
-padding: 100px;
-background-image: url(${Background}) ;
-width: 100vw;
-display: flex;
-flex-direction: column;
-align-items: center;
-`;
-
-const PageContainer = styled.div`
- // background-color: #ca2b2b;
-  min-height: 100vh;
-  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  padding: 150px;
+  //background: rgb(8,10,11);
+  background: linear-gradient(90deg, rgba(8,10,11,1) 0%, rgba(24,28,31,1) 35%, rgba(38,42,45,1) 100%);
+  width: 100vw;
   display: flex;
   flex-direction: column;
-  `;
+  //justify-content: center;
+  align-items: center;
+  min-height: 100%;
+`;  
   
-const MainContent = styled.div`
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
+const WraperTop = styled.div`
+grid-area: 2 / 1 / 3 / 2;
 `;
 
-const CarouselSection = styled.div`
-  background-color: #ddd;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+const WraperBottom = styled.div`
+grid-area: 1 / 1 / 2 / 2;
+//position: absolute;
+//margin-top: ${(props) => props.marginTop}px;
 
-const VideoNewsSection = styled.div`
-  background-color: #ccc;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 
-const Home = () =>{
+const Home = () =>{ 
+
   return (
     <Container>
-      <ColumnistsContainer />
-      
-      <MainContent>
-        <CarouselSection>
-          <Swiper slidesPerView={1} pagination={{ clickable: true }}>
-            <SwiperSlide>Notícia 1</SwiperSlide>
-            <SwiperSlide>Notícia 2</SwiperSlide>
-            <SwiperSlide>Notícia 3</SwiperSlide>
-          </Swiper>
-        </CarouselSection>
-        <VideoNewsSection>Notícias em Vídeo</VideoNewsSection>
-      </MainContent>
-      <GridNewsBotton />
+      <WraperTop>
+        <ColumnistsContainer />
+        <MainContainerHome />
+      </WraperTop>
     </Container>
   );
 };
 
-export default Home;
+export default Home; 
+
+/*
+<WraperBottom>
+<GridNewsBotton />
+</WraperBottom>
+*/
