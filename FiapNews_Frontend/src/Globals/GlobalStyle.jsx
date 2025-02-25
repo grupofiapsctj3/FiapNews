@@ -11,10 +11,11 @@ const GlobalStyle = createGlobalStyle`
 
  
 
-  html, body, #root {
+  html body #root {
     width: 100%;
     height: 100%;
     overflow: auto;
+    overflow-x: hidden;
   }
   /* Estilizando a barra de rolagem (Chrome, Safari, Edge) */
   ::-webkit-scrollbar {

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState }  from "react";
 import styled from "styled-components";
 import Carrossel from "../SwiperSlide/swiperSlide";
 import arrowIcon from "../../assets/seta-cinza.png";
 import NewsCards from "../Card/Card";
+
 
 const Container = styled.div`
     display: grid;
@@ -10,7 +11,7 @@ const Container = styled.div`
     grid-template-rows: 1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    height: 80vh;
+    //height: 80vh;
     gap: 30px;
     width: 100%;
 `;
@@ -31,7 +32,7 @@ const NewsContainer = styled.div`
 const MainContainerNews = styled.div`
     width: 100%;
     display: flex;
-    height: 50%;
+    height: 45%;
     align-items: center;
 `;
 
@@ -41,6 +42,7 @@ const MainContainerNews = styled.div`
 const Carrousel = styled.div`
     width: 750px;
     height: 650px;
+    margin-top: 200px;
     //background: #f3f;
 `;
 
@@ -57,7 +59,7 @@ gap: 20px;
 //margin:50px;
 //margin-top:100px;
 //align-items: center;
-padding-left: 25px;
+//padding-left: 25px;
 padding-top: 100px;
 `;
 
@@ -67,13 +69,15 @@ const ImgIcon = styled.img`
 `;
 
 const TextCard = styled.div`
-width: 200px;
-height: 200px;
+width: 40%;
+height: auto;
 text-align: left;
-// background: #53f;
+//background: #53f;
 //display: flex;
 //flex-direction: column;
-//gap: 25px;
+gap: 10px;
+margin: 5px;
+padding: 10px;
 `;
 
 
@@ -112,7 +116,7 @@ const ImageVideo = styled.img`
   width: 100%;
   height: 150px; 
   border-radius: 8px;
-  overflow: hidden; /* Impede que a imagem ultrapasse o card */
+  overflow: hidden; 
 `;
 
 const VideoTitle = styled.h3`
@@ -165,84 +169,50 @@ const videoData = [
 ];
 
 
-const newsData = [
-    {
-      image: 'https://cdn.filestackcontent.com/BNQmN0i6RaqOLTsnwGkh',
-      title: 'Notícia 1',
-      description: 'Descrição breve da Notícia 1',
-      brief:'Carnaval em São Paulo: Bloquinhos levam milhares de foliões às ruas neste domingo'
-    },
-    {
-      image: 'https://cdn.filestackcontent.com/338BsZA3RtacGghb0YTQ',
-      title: 'Black Friday: supera mais de 74 bilhões',
-      description: 'Valor arrecadado durante a Black Friday supera as vendas do Ano Novo',
-      brief:'Primeiro minerador de asteroides está pronto para ser lançado'
-    },
-    {
-      image: 'https://cdn.filestackcontent.com/YUTXL9ipSgqb9SkUWi2Q',
-      title: 'Notícia 3',
-      description: 'Descrição breve da Notícia 3',
-      brief:'Tesla identifica problema na direção de mais de 300 mil veículos'
-    },
-    {
-      image: 'https://img.odcdn.com.br/wp-content/uploads/2025/01/Design-sem-nome-14-1-1920x1080.jpg',
-      title: 'Notícia 4',
-      description: 'Descrição breve da Notícia 4',
-      brief:'Quais são os níveis de calor no Brasil e como lidar com cada um deles?'
-    },
-    {
-        image: 'https://cdn.filestackcontent.com/BNQmN0i6RaqOLTsnwGkh',
-        title: 'Notícia 1',
-        description: 'Descrição breve da Notícia 1',
-        brief:'DeepSeek promete liberar códigos de IA na próxima semana'
-      },
-      {
-        image: 'https://cdn.filestackcontent.com/338BsZA3RtacGghb0YTQ',
-        title: 'Black Friday: supera mais de 74 bilhões',
-        description: 'Valor arrecadado durante a Black Friday supera as vendas do Ano Novo',
-        brief:'Esse é o robô humanoide mais assustador que você já viu'
-      },
-      {
-        image: 'https://cdn.filestackcontent.com/YUTXL9ipSgqb9SkUWi2Q',
-        title: 'Notícia 3',
-        description: 'Descrição breve da Notícia 3',
-        brief:'Operator: agente de IA da OpenAI já está disponível no Brasil; veja como usar'
-      },
-];
 
-const MainContainerHome = () =>{
+const MainContainerHome = () => {
+  const [textNews, setTextNews] = useState([]);
 
-    return (
-        <Container>
-            <VideoContainer>
-               {videoData.map((video, index) => (
-                <VideoCards key={index}>
-                    <ImageVideo src={video.image} alt={video.title} />
-                    <VideoTitle>{video.title}</VideoTitle>
-                </VideoCards>
-               ))}
-            </VideoContainer>
-            <NewsContainer>
-                <MainContainerNews>
-                    <Carrousel>
-                        <Carrossel />
-                    </Carrousel>       
-                    <TextNews>
-                        {newsData.map((news, index) => (
-                            <TextCard key={index}>
-                                <NewsTitle>{news.brief}</NewsTitle>
-                                <NewsDescription><ImgIcon src={arrowIcon} />&nbsp;{news.description}</NewsDescription>
-                            </TextCard>
-                        ))}
-                    </TextNews>
-                </MainContainerNews>
-                <NewsCards />
-            </NewsContainer>
-        </Container>
+  useEffect(() => {
+    fetch("http://localhost:5000/api/news/news/1/4/4") // Da 5ª à 11ª notícia type=1
+      .then((res) => res.json())
+      .then((data) => setTextNews(data))
+      .catch((err) => console.error("Erro ao buscar notícias:", err));
+  }, []);
 
-    );
+  return (
+    <Container>
+      <VideoContainer>
+        {videoData.map((video, index) => (
+          <VideoCards key={index}>
+            <ImageVideo src={video.image} alt={video.title} />
+            <VideoTitle>{video.title}</VideoTitle>
+          </VideoCards>
+        ))}
+      </VideoContainer>
+      <NewsContainer>
+        <MainContainerNews>
+          <Carrousel>
+            <Carrossel />
+          </Carrousel>       
+          <TextNews>
+            {textNews.map((news, index) => (
+              <TextCard key={index}>
+                <NewsTitle>{news.subTitle}</NewsTitle> {}
+                <NewsDescription>
+                  <ImgIcon src={arrowIcon} />&nbsp;{news.title} {}
+                </NewsDescription>
+              </TextCard>
+            ))}
+          </TextNews>
+        </MainContainerNews>
+        <NewsCards />
+      </NewsContainer>
+    </Container>
+  );
 };
 
-export default MainContainerHome
+export default MainContainerHome;
+
 
 

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import Background from "../../assets/gradiente.webp";
+
 
 
 const Container = styled.div`
 padding: 100px;
-background-image: url(${Background}) ;
+background: linear-gradient(90deg, rgba(8,10,11,1) 0%, rgba(24,28,31,1) 35%, rgba(38,42,45,1) 100%);
 width: 100vw;
 display: flex;
 flex-direction: column;
@@ -100,7 +100,7 @@ const Text = styled.p`
 
 
 const News = () => {
-  const newsId = "67b6638ef773aac7a3029adc";
+  const newsId = "67b0b75f6f7e5e046d2d2d88";
   //const { id } = useParams(); // Pega o ID da URL
   const [news, setNews] = useState(null);
   const [loading, setLoading] = useState(true);

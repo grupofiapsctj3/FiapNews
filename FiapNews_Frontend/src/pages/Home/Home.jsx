@@ -6,14 +6,14 @@ import MainContainerHome from "../../components/MainContainerHome/mainContainerH
 
 
 
-const Container = styled.div`
+const Container = styled.div` 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   padding: 150px;
-  //background: rgb(8,10,11);
+  background: rgb(8,10,11);
   background: linear-gradient(90deg, rgba(8,10,11,1) 0%, rgba(24,28,31,1) 35%, rgba(38,42,45,1) 100%);
   width: 100vw;
   display: flex;
@@ -21,6 +21,7 @@ const Container = styled.div`
   //justify-content: center;
   align-items: center;
   min-height: 100%;
+  //overflow: hidden;
 `;  
   
 const WraperTop = styled.div`
@@ -43,6 +44,9 @@ const Home = () =>{
         <ColumnistsContainer />
         <MainContainerHome />
       </WraperTop>
+      <WraperBottom>
+        <GridNewsBotton />
+      </WraperBottom>
     </Container>
   );
 };

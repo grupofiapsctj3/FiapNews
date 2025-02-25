@@ -2,6 +2,9 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/navbar";
 import { useEffect } from "react";
+//import { Container } from "./pages/Home/Home";
+
+
 
 function App() {
   useEffect(() => {
@@ -31,6 +34,7 @@ function App() {
       <Navbar />
       <Outlet />
       <Footer />
+      
     </>
   );
 }

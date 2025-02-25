@@ -27,6 +27,23 @@ router.get("/news", async (req, res) => {
   }
 });
 
+router.get("/news/:type/:skip/:limit", async (req, res) => {
+  try {
+    const { type, skip, limit } = req.params;
+    const newsList = await textNewsModel
+      .find({ type })
+      .sort({ date: -1 }) // Ordena da mais recente para a mais antiga
+      .skip(Number(skip))
+      .limit(Number(limit));
+
+    res.json(newsList);
+  } catch (error) {
+    console.error("Erro ao buscar notícias:", error);
+    res.status(500).json({ error: "Erro ao buscar notícias" });
+  }
+});
+
+
 router.post("/add", async (req, res) => {
   try {
     const { type, date, title, briefTitle, subTitle, briefSubTitle, summary, news } = req.body;
