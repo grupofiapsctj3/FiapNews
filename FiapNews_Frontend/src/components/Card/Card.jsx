@@ -145,7 +145,7 @@ const NewsCards = () => {
           <ImageContainer>
             <NewsImage src={news.image} alt={news.title} />
           </ImageContainer>
-          <NewsTitle></NewsTitle> {/* Agora exibe corretamente */}
+          <NewsTitle></NewsTitle> {}
           <NewsDescription>{news.title}</NewsDescription>
         </NewsCard>
       ))}
