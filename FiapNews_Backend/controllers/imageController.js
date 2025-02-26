@@ -2,12 +2,9 @@ import axios from "axios";
 import multer from "multer";
 import ImageModel from "../models/images.js";
 
-
-// 🔥 Configuração do Multer (upload em memória)
 const storage = multer.memoryStorage();
 const upload = multer({ storage }).single("file");
 
-// 🔥 Função para fazer upload da imagem para o Filestack e salvar no MongoDB
 async function uploadImage(req, res) {
   try {
     if (!req.file) {
@@ -17,7 +14,7 @@ async function uploadImage(req, res) {
     const apiKey = process.env.FILESTACK_API_KEY;
     const fileBuffer = req.file.buffer;
 
-    // 🔥 Envia a imagem para o Filestack
+
     const response = await axios.post(
       `https://www.filestackapi.com/api/store/S3?key=${apiKey}`,
       fileBuffer,
@@ -33,7 +30,6 @@ async function uploadImage(req, res) {
   }
 }
 
-// 🔥 Função para salvar URL, legenda e descrição no banco
 async function saveImageMetadata(req, res) {
   try {
     const { imageUrl, caption, description } = req.body;
@@ -61,6 +57,5 @@ async function getImages(req, res) {
     res.status(500).json({ message: "Erro ao buscar as imagens." });
   }
 }
-
 
 export { uploadImage, saveImageMetadata, getImages, upload };

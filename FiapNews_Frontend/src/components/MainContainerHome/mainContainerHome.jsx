@@ -4,7 +4,7 @@ import Carrossel from "../SwiperSlide/swiperSlide";
 import arrowIcon from "../../assets/seta-cinza.png";
 import NewsCards from "../Card/Card";
 import VideoContainer from "../VideoContainer/VideoContainer";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const Container = styled.div`

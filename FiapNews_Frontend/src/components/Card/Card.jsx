@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const NewsGrid = styled.div`
     display: flex;
-    //grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px;
     padding: 20px;
     justify-content: center;

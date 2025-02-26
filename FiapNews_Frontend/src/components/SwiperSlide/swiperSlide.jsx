@@ -43,7 +43,7 @@ const Carrossel = () => {
   const [carouselNews, setCarouselNews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/news/news/1/0/4") // Últimas 4 notícias type=1
+    fetch("http://localhost:5000/api/news/news/1/0/4") 
       .then((res) => res.json())
       .then((data) => setCarouselNews(data))
       .catch((err) => console.error("Erro ao buscar notícias:", err));
