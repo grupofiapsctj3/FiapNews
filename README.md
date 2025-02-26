@@ -1,6 +1,8 @@
 # Documentação da API FIAP News Backend e Fronted
 
-#Backend
+
+
+# Backend
 
 ## Tecnologias Utilizadas
 
@@ -175,7 +177,7 @@ Observação importante: alguns elementos só funcionan corretamente com o nodej
 }
 ```
 
-#Fronted
+# Fronted
 
 ## Tecnologias Utilizadas
 - **React.js**
