@@ -1,5 +1,7 @@
 # Documentação da API FIAP News Backend e Fronted
 
+
+
 # Backend
 
 ## Tecnologias Utilizadas
