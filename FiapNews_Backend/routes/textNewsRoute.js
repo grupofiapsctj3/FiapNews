@@ -20,7 +20,7 @@ router.get("/:id", async (req, res) => {
 
 router.get("/news", async (req, res) => {
   try {
-    const newsList = await textNewsModel.find(); // Busca todas as notícias no banco
+    const newsList = await textNewsModel.find(); 
     res.json(newsList);
   } catch (error) {
     res.status(500).json({ message: "Erro ao buscar notícias", error });
@@ -32,7 +32,7 @@ router.get("/news/:type/:skip/:limit", async (req, res) => {
     const { type, skip, limit } = req.params;
     const newsList = await textNewsModel
       .find({ type })
-      .sort({ date: -1 }) // Ordena da mais recente para a mais antiga
+      .sort({ date: -1 }) 
       .skip(Number(skip))
       .limit(Number(limit));
 

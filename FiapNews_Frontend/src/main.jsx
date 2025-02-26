@@ -2,7 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { createBrowserRouter,  RouterProvider } from "react-router-dom";
-import News from './pages/News/news.jsx'
+import News from './pages/News/news.jsx';
+import Videos from './pages/Video/videoNews.jsx';
+import VideoRegistration from './pages/VideoRegistration/VideoRegistrarion.jsx';
 import GlobalStyle from './Globals/GlobalStyle.jsx';
 import Error from './pages/Error/Error.jsx';
 import NewsFormRestration from './pages/Registration/newsRegistration.jsx';
@@ -17,16 +19,28 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <NewsFormRestration  />,
+        element: <Home  />,
       },
       {
-        path: "/news",
+        path: "/news/:id",
         element: <News />,
       },
       {
         path: "/home",
         element: <Home />,
       },
+      {
+        path: "/videos/:id",
+        element: <Videos />,
+      },
+      {
+        path: "/videosreg",
+        element: <VideoRegistration />,
+      },
+      {
+        path: "/newsreg",
+        element: <NewsFormRestration />,
+      }
     ]
    
   }

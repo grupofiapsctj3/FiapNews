@@ -24,6 +24,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import imageRoutes from "./routes/imageRoutes.js";
 import newNews from "./routes/textNewsRoute.js";
+import rotasVideos from "./routes/videoNewsRoutes.js";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use(express.json());
 // 🔥 Importando as rotas da API
 app.use("/api/images", imageRoutes);
 app.use("/api/news", newNews);
+app.use("/api/videos", rotasVideos);
 //app.use("/api", textNewsRoute);
 
 // Conexão com o banco de dados MongoDB

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const NewsGrid = styled.div`
     display: flex;
@@ -11,12 +12,15 @@ const NewsGrid = styled.div`
 `;
 
 const NewsCard = styled.div`
-    //background-color: #ccc;
     border-radius: 8px;
     width: 20rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: 1rem;
     border-color: #abb4b4;
+    transition: all 0.3s ease; 
+    cursor: pointer;  
+    &:hover {
+    transform: scale(1.05); 
+    }
 `;
 
 const ImageContainer = styled.div`
@@ -24,7 +28,12 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 150px; 
   border-radius: 8px;
-  overflow: hidden; /* Impede que a imagem ultrapasse o card */
+  overflow: hidden;
+  transition: all 0.3s ease; 
+    cursor: pointer;  
+    &:hover {
+      box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
+    }
 `;
 
 const NewsImage = styled.img`
@@ -50,69 +59,6 @@ const NewsDescription = styled.p`
   color: #c9dddd;
   margin: 0.5rem;
 `;
-const newsData = [
-    {
-      image: 'https://cdn.filestackcontent.com/BNQmN0i6RaqOLTsnwGkh',
-      title: 'Notícia 1',
-      description: 'Descrição breve da Notícia 1'
-    },
-    {
-      image: 'https://cdn.filestackcontent.com/338BsZA3RtacGghb0YTQ',
-      title: 'Black Friday: supera mais de 74 bilhões',
-      description: 'Valor arrecadado durante a Black Friday supera as vendas do Ano Novo'
-    },
-    {
-      image: 'https://cdn.filestackcontent.com/YUTXL9ipSgqb9SkUWi2Q',
-      title: 'Notícia 3',
-      description: 'Descrição breve da Notícia 3'
-    },
-    {
-      image: 'https://img.odcdn.com.br/wp-content/uploads/2025/01/Design-sem-nome-14-1-1920x1080.jpg',
-      title: 'Notícia 4',
-      description: 'Descrição breve da Notícia 4'
-    },
-    {
-        image: 'https://cdn.filestackcontent.com/BNQmN0i6RaqOLTsnwGkh',
-        title: 'Notícia 1',
-        description: 'Descrição breve da Notícia 1'
-      },
-      {
-        image: 'https://cdn.filestackcontent.com/338BsZA3RtacGghb0YTQ',
-        title: 'Black Friday: supera mais de 74 bilhões',
-        description: 'Valor arrecadado durante a Black Friday supera as vendas do Ano Novo'
-      },
-      {
-        image: 'https://cdn.filestackcontent.com/YUTXL9ipSgqb9SkUWi2Q',
-        title: 'Notícia 3',
-        description: 'Descrição breve da Notícia 3'
-      },
-      {
-        image: 'https://img.odcdn.com.br/wp-content/uploads/2025/01/Design-sem-nome-14-1-1920x1080.jpg',
-        title: 'Notícia 4',
-        description: 'Descrição breve da Notícia 4'
-      }
-  ];
-  
-
-// const NewsCards = () => {
-
-//     return(
-//         <NewsGrid>
-//         {newsData.map((news, index) => (
-//           <NewsCard key={index}>
-//             <ImageContainer>
-//                 <NewsImage src={news.image} alt={news.title} />
-//                 <NewsTitle>{news.title}</NewsTitle>
-//             </ImageContainer>
-//             <NewsDescription>{news.description}</NewsDescription>
-//           </NewsCard>
-//         ))}
-//       </NewsGrid>
-
-//     )
-// }
-
-// export default NewsCards
 
 const NewsCards = () => {
   const [newsData, setNewsData] = useState([]);
@@ -141,13 +87,14 @@ const NewsCards = () => {
   return (
     <NewsGrid>
       {newsData.map((news, index) => (
-        <NewsCard key={index}>
-          <ImageContainer>
-            <NewsImage src={news.image} alt={news.title} />
-          </ImageContainer>
-          <NewsTitle></NewsTitle> {}
-          <NewsDescription>{news.title}</NewsDescription>
-        </NewsCard>
+        <Link to={`/news/${news._id}`} key={news._id} style={{ textDecoration: "none" }}>
+          <NewsCard key={index}>
+            <ImageContainer>
+              <NewsImage src={news.image} alt={news.title} />
+            </ImageContainer>
+            <NewsDescription>{news.title}</NewsDescription>
+          </NewsCard>
+          </Link>
       ))}
     </NewsGrid>
   );

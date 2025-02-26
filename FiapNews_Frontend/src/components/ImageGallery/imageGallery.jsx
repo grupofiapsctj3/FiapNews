@@ -6,7 +6,11 @@ const GalleryContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  width: 70%;
+  margin-left: 100px;
 `;
 
 const ImagePreview = styled.img`
@@ -27,7 +31,7 @@ const RefreshButton = styled.button`
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #007bff;
+  background-color: #EA1D5D;
   color: white;
   border: none;
   border-radius: 5px;

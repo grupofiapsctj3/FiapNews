@@ -19,7 +19,7 @@ const NavbarFixed = styled.div`
   background: linear-gradient(to right, #272d30, #1d2123);
   color: white;
   padding: 0.2rem;
-  z-index: 1100; /* Certifique-se de que esteja acima de outros elementos */
+  z-index: 1100; 
   height: ${FIXED_NAVBAR_HEIGHT};
 `;
 
@@ -59,8 +59,10 @@ const Button = styled.button`
 const NavLinks = styled.ul`
   list-style: none;
   display: flex;
-  gap: 1.5rem;
-
+  gap: 3rem;
+  font-family: Helvetica ;
+  font-size: 1.2rem;
+  
   li {
     cursor: pointer;
     transition: color 0.3s ease;
@@ -103,7 +105,7 @@ const Navbar = () => {
 
   return (
     <NavbarContainer>
-      <NavbarFixed>teste</NavbarFixed>
+      <NavbarFixed></NavbarFixed>
       <NavbarDinamic scrollY={scrollY}>
         <NavLogo>
           <img src={FiapNewsPlus} alt="Logo" />
@@ -113,10 +115,10 @@ const Navbar = () => {
           <StyledLink to= '/'>Home</StyledLink>
         </li>
         <li>
-          <StyledLink to= "/News">News</StyledLink>
+          <StyledLink to= "/Newsreg">News</StyledLink>
         </li>
         <li>
-          <StyledLink to= "/">Videos</StyledLink>
+          <StyledLink to= "/Videosreg">Videos</StyledLink>
         </li>
         <li>
           <StyledLink to= "/">Suporte</StyledLink>
